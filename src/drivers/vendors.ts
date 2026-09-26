@@ -513,6 +513,11 @@ export const LOGITECH_RECEIVER_PRODUCT_IDS = [
   0xc547,
   0x40bd,
   0xc54f,
+  // The PRO X 3 Superstrike reports its own transport ids as {Wireless: "40BE",
+  // USB: "C0A9"}, one above the PRO X 2's. Taken from the mouse's HID++
+  // identity, not yet seen as a connected USB device.
+  0x40be,
+  0xc0a9,
   ...LOGITECH_BOLT_PRODUCT_IDS,
 ] as const;
 

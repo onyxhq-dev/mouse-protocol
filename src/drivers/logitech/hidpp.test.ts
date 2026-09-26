@@ -93,6 +93,13 @@ test("the receiver seen next to a PRO X 3 Superstrike (0xc54f) is a known receiv
   assert.equal(LogitechHidppClient.isKnownReceiver({ vendorId: 0x046d, productId: 0xc54f } as HIDDevice), true);
 });
 
+test("the PRO X 3 Superstrike's own wireless (0x40be) and wired (0xc0a9) transports are known receivers", () => {
+  // From the mouse's HID++ transportIds {Wireless: "40BE", USB: "C0A9"}, the same
+  // pair of ids the PRO X 2 reports one lower (40BD / C0A8).
+  assert.equal(LogitechHidppClient.isKnownReceiver({ vendorId: 0x046d, productId: 0x40be } as HIDDevice), true);
+  assert.equal(LogitechHidppClient.isKnownReceiver({ vendorId: 0x046d, productId: 0xc0a9 } as HIDDevice), true);
+});
+
 test("receiver probing covers every pairing slot before the direct index", () => {
   // G HUB merging a keyboard onto the receiver can move the mouse off slot
   // 0x01, so discovery probes all six slots before the direct index.
